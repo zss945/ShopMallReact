@@ -1,14 +1,14 @@
 import React, {Component} from 'react'
 import {Text, TouchableOpacity} from 'react-native'
-import PropTypes from 'prop-types';
+import * as PropTypes from "prop-types";
 
 class AppButton extends Component {
 
     render() {
-        let {style, bgColor, textColor, fontSize, borderRadius, title} = this.props
+        let {style, backgroundColor, textColor, fontSize, borderRadius, title} = this.props
         return (
             <TouchableOpacity style={{
-                backgroundColor: bgColor,
+                backgroundColor: backgroundColor,
                 borderRadius: borderRadius,
                 ...style
             }} onPress={this.props.onPress}>
@@ -26,11 +26,10 @@ class AppButton extends Component {
 }
 
 AppButton.defaultProps = {
-    bgColor: '#f4511e',
+    backgroundColor: '#f4511e',
     textColor: '#ffffff',
     fontSize: 15,
     borderRadius: 5,
-    title: '',
 }
 
 AppButton.propTypes={

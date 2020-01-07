@@ -2,6 +2,7 @@ import React from 'react';
 import {Image, Text, View, StyleSheet, TouchableOpacity, DeviceEventEmitter} from 'react-native';
 import StoreUtil from "../utils/StoreUtil";
 import {formatPhone} from "../utils/AppUtil";
+import ListItem from "../view/ListItem";
 
 class User extends React.Component {
 
@@ -36,7 +37,9 @@ class User extends React.Component {
             return;
         };
         //移除广播
-        if (this.listener) { this.listener.remove(); }
+        if (this.listener) {
+            this.listener.remove();
+        }
     }
 
     render() {
@@ -46,7 +49,7 @@ class User extends React.Component {
                     <Image source={require('../../assets/photo.png')} style={styles.userImage}/>
                     <TouchableOpacity onPress={() => {
                         if (this.state.loginInfo != null) {
-
+                            this.props.navigation.navigate('Login');
                         } else {
                             this.props.navigation.navigate('Login');
                         }
@@ -88,23 +91,20 @@ class User extends React.Component {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.space}/>
-                <TouchableOpacity onPress={() => {
+                <ListItem title={'地址管理'} onPress={() => {
                     this.props.navigation.navigate('Login');
                 }}>
-                    <Text style={{margin: 16}}>地址管理</Text>
-                </TouchableOpacity>
+                </ListItem>
                 <View style={styles.line}/>
-                <TouchableOpacity onPress={() => {
+                <ListItem title={'帮助与客服'} onPress={() => {
                     this.props.navigation.navigate('Login');
                 }}>
-                    <Text style={{margin: 16}}>帮助与客服</Text>
-                </TouchableOpacity>
+                </ListItem>
                 <View style={styles.line}/>
-                <TouchableOpacity onPress={() => {
+                <ListItem title={'设置'} onPress={() => {
                     this.props.navigation.navigate('Login');
                 }}>
-                    <Text style={{margin: 16}}>设置</Text>
-                </TouchableOpacity>
+                </ListItem>
                 <View style={styles.line}/>
             </View>
         );

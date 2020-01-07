@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
     slide: {
         flex: 1,
         justifyContent: 'center',
-        backgroundColor: 'transparent'
+        backgroundColor: '#ffffff'
     },
     text: {
         color: '#515151',

@@ -190,6 +190,7 @@ class Cart extends React.Component {
                         alignItems: 'center',
                         height: 200
                     }}>
+                        <Image source={require('../../assets/empty_cart.png')} style={styles.emptyCartImage}/>
                         <Text>
                             购物车是空的
                         </Text>
@@ -325,6 +326,11 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         width: 20,
         height: 20
+    },
+    emptyCartImage: {
+        margin: 12,
+        width: 40,
+        height: 40
     },
     cartImage: {
         backgroundColor: '#f4f4f4',
