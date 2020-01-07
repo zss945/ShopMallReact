@@ -89,7 +89,7 @@ const StackTabNavigator = createStackNavigator({
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
-                fontWeight: 'bold',
+                fontSize: 18,
             },
         },
     }

@@ -4,9 +4,6 @@ import { createAppContainer,createSwitchNavigator } from 'react-navigation';
 // import { createStackNavigator } from 'react-navigation-stack';
 // import Login from "./app/auth/Login";
 import HomeScreen from "./app/HomeScreen";
-import { enableScreens } from 'react-native-screens';
-
-enableScreens();
 
 export default class App extends React.Component {
   render() {

@@ -354,9 +354,9 @@ const styles = StyleSheet.create({
         color: '#515151'
     },
     goodsName: {
-        paddingTop: 12,
-        paddingBottom: 12,
+        paddingTop: 5,
         width: screenWidth * 0.5 - 15,
+        height: 40,
         fontSize: 14,
         color: '#515151'
     },
