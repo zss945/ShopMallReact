@@ -1,0 +1,15 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+
+        <!-- Android 4.4 API 19 透明状态栏 -->
+        <item name="android:windowTranslucentStatus">true</item>
+
+        <!-- API21 Android 透明状态栏 -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+
+    </style>
+
+</resources>
