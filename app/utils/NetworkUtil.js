@@ -4,7 +4,7 @@ let NetworkUtil = {
         fetch(url)
             .then((response) => response.text())
             .then((responseText) => {
-                // console.log('------responseText' + responseText);
+                console.log('------responseText = ' + responseText);
                 callback(JSON.parse(responseText));
             }).catch(error => {
             console.log("----网络连接异常");
@@ -23,7 +23,7 @@ let NetworkUtil = {
         fetch(url, fetchOptions)
             .then((response) => response.text())
             .then((responseText) => {
-                // console.log('------responseText' + responseText);
+                console.log('------responseText = ' + responseText);
                 callback(JSON.parse(responseText));
             }).catch(error => {
                 console.log("----网络连接异常");

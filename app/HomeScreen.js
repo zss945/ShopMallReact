@@ -91,6 +91,7 @@ const StackTabNavigator = createStackNavigator({
             headerTitleStyle: {
                 fontSize: 18,
             },
+            animationEnabled: false,
         },
     }
 );

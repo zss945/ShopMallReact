@@ -71,20 +71,22 @@ class Login extends React.Component {
             const cartKey = cart.cartKey;
             const list = cart.list;
             let cartList = [];
-            list.map((item, index) => {
-                const cartItem = {
-                    cartItemId: item.id,
-                    productId: item.productId,
-                    quantity: item.quantity,
-                    cartKey: cartKey,
-                    name: item.name,
-                    image: item.image,
-                    price: item.price,
-                    specificationValues: item.specificationValues,
-                    isSelect: 1
-                }
-                cartList.push(cartItem);
-            })
+            if(list != null && list.length > 0){
+                list.map((item, index) => {
+                    const cartItem = {
+                        cartItemId: item.id,
+                        productId: item.productId,
+                        quantity: item.quantity,
+                        cartKey: cartKey,
+                        name: item.name,
+                        image: item.image,
+                        price: item.price,
+                        specificationValues: item.specificationValues,
+                        isSelect: 1
+                    }
+                    cartList.push(cartItem);
+                })
+            }
             StoreUtil.setData("loginInfo", saveData);
             StoreUtil.setData("cartList", cartList);
             DeviceEventEmitter.emit('changeLogin', null);

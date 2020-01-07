@@ -41,15 +41,15 @@ class Home extends React.Component {
     render() {
         return <ScrollableTabView
             initialPage={0}
-            renderTabBar={() => <ScrollableTabBar/>}>
+            renderTabBar={() => <ScrollableTabBar activeTextColor={'#f4511e'} underlineStyle={{backgroundColor: '#f4511e'}}/>}>
             {
-               this.state.titleList.map((item, index) => {
-                   return (
-                       <View tabLabel={item.name} key={index} style={styles.container}>
-                           <HomeList categoryItem={item} navigation={this.props.navigation} />
-                       </View>
-                   )
-               })
+                this.state.titleList.map((item, index) => {
+                    return (
+                        <View tabLabel={item.name} key={index} style={styles.container}>
+                            <HomeList categoryItem={item} navigation={this.props.navigation}/>
+                        </View>
+                    )
+                })
             }
         </ScrollableTabView>
     }
