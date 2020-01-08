@@ -4,6 +4,7 @@ import API from "../api/API";
 import NetworkUtil from "../utils/NetworkUtil";
 import StoreUtil from "../utils/StoreUtil";
 import AppButton from "../view/AppButton";
+import {showToast} from "../utils/AppUtil";
 
 class Login extends React.Component {
 
@@ -33,7 +34,6 @@ class Login extends React.Component {
                 <View style={styles.line}/>
 
                 <TextInput
-
                     style={styles.styleInput}
                     placeholder="密码"
                     placeholderTextColor={'#999999'}
@@ -56,6 +56,14 @@ class Login extends React.Component {
     }
 
     login() {
+        if(this.state.mobile.trim().length === 0){
+            showToast('手机号码不能为空')
+            return;
+        }
+        if(this.state.password.trim().length === 0){
+            showToast('密码不能为空')
+            return;
+        }
         const params = {mobile: this.state.mobile, password: this.state.password}
         NetworkUtil.post(API.login, params, (res) => {
             const data = res.data;
@@ -116,9 +124,12 @@ const styles = StyleSheet.create({
         marginRight: 16,
     },
     forgetText: {
+        marginTop: 16,
+        marginBottom: 16,
         marginLeft: 'auto',
+        marginRight: 10,
         justifyContent: 'flex-end',
-        margin: 10
+        color: '#515151',
     },
     line: {
         height: 1,

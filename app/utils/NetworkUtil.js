@@ -1,3 +1,5 @@
+import {showToast} from "./AppUtil";
+
 let NetworkUtil = {
     //get请求
     get(url, callback) {
@@ -5,7 +7,12 @@ let NetworkUtil = {
             .then((response) => response.text())
             .then((responseText) => {
                 console.log('------responseText = ' + responseText);
-                callback(JSON.parse(responseText));
+                const result = JSON.parse(responseText);
+                if (result.code === 0) {
+                    callback(result);
+                } else {
+                    showToast(result.error);
+                }
             }).catch(error => {
             console.log("----网络连接异常");
         });
@@ -24,9 +31,14 @@ let NetworkUtil = {
             .then((response) => response.text())
             .then((responseText) => {
                 console.log('------responseText = ' + responseText);
-                callback(JSON.parse(responseText));
+                const result = JSON.parse(responseText);
+                if (result.code === 0) {
+                    callback(result);
+                } else {
+                    showToast(result.error);
+                }
             }).catch(error => {
-                console.log("----网络连接异常");
+            console.log("----网络连接异常");
         });
     },
 }
