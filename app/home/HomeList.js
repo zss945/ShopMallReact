@@ -14,8 +14,8 @@ class HomeList extends React.Component {
             loading: false,
             data: [],
             page: 1,
-            seed: 1,
-            error: null,
+            limit: 20,
+            totalCount: 0,
             refreshing: false
         };
 
@@ -33,13 +33,13 @@ class HomeList extends React.Component {
     }
 
     loadData() {
-        const {page} = this.state;
+        const {page, limit} = this.state;
         const {categoryItem} = this.props
-        const url = API.queryGoodsByCategory + `?page=${page}&limit=20&level=${categoryItem.level}&categoryId=${categoryItem.id}`;
+        const url = API.queryGoodsByCategory + `?page=${page}&limit=${limit}&level=${categoryItem.level}&categoryId=${categoryItem.id}`;
         NetworkUtil.get(url, (res) => {
             this.setState({
                 data: page === 1 ? res.data.page.list : [...this.state.data, ...res.data.page.list],
-                error: res.error || null,
+                totalCount: res.data.page.totalCount,
                 loading: false,
                 refreshing: false
             });
@@ -50,7 +50,6 @@ class HomeList extends React.Component {
         this.setState(
             {
                 page: 1,
-                seed: this.state.seed + 1,
                 refreshing: true
             },
             () => {
@@ -60,14 +59,16 @@ class HomeList extends React.Component {
     };
 
     handleLoadMore = () => {
-        this.setState(
-            {
-                page: this.state.page + 1
-            },
-            () => {
-                this.loadData();
-            }
-        );
+        if (this.state.page * this.state.limit < this.state.totalCount) {
+            this.setState(
+                {
+                    page: this.state.page + 1
+                },
+                () => {
+                    this.loadData();
+                }
+            );
+        }
     };
 
     renderFooter = () => {
@@ -115,7 +116,7 @@ class HomeList extends React.Component {
                 onRefresh={this.handleRefresh}
                 refreshing={this.state.refreshing}
                 onEndReached={this.handleLoadMore}
-                onEndReachedThreshold={50}
+                onEndReachedThreshold={0.01}
                 columnWrapperStyle={styles.columnWrapperStyle}
             />
         );

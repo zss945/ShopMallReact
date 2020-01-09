@@ -28,8 +28,8 @@ class Cart extends React.Component {
             cartData: [],
             goodsData: [],
             page: 1,
-            seed: 1,
-            error: null,
+            limit: 20,
+            totalCount: 0,
             refreshing: false,
             isSelectAll: false
         };
@@ -64,12 +64,12 @@ class Cart extends React.Component {
     }
 
     loadData() {
-        const {page} = this.state;
-        const url = API.queryGoodsByLike + `?page=${page}&limit=20`;
+        const {page, limit} = this.state;
+        const url = API.queryGoodsByLike + `?page=${page}&limit=${limit}`;
         NetworkUtil.get(url, (res) => {
             this.setState({
                 goodsData: page === 1 ? res.data.page.list : [...this.state.goodsData, ...res.data.page.list],
-                error: res.error || null,
+                totalCount: res.data.page.totalCount,
                 loading: false,
                 refreshing: false
             });
@@ -80,7 +80,6 @@ class Cart extends React.Component {
         this.setState(
             {
                 page: 1,
-                seed: this.state.seed + 1,
                 refreshing: true
             },
             () => {
@@ -90,14 +89,16 @@ class Cart extends React.Component {
     };
 
     handleLoadMore = () => {
-        this.setState(
-            {
-                page: this.state.page + 1
-            },
-            () => {
-                this.loadData();
-            }
-        );
+        if (this.state.page * this.state.limit < this.state.totalCount) {
+            this.setState(
+                {
+                    page: this.state.page + 1
+                },
+                () => {
+                    this.loadData();
+                }
+            );
+        }
     };
 
     cartRenderItem = ({index, item}) => {
@@ -268,7 +269,7 @@ class Cart extends React.Component {
                     onRefresh={this.handleRefresh}
                     refreshing={this.state.refreshing}
                     onEndReached={this.handleLoadMore}
-                    onEndReachedThreshold={50}
+                    onEndReachedThreshold={0.01}
                     columnWrapperStyle={styles.columnWrapperStyle}
                 />
                 {mTotalBar}

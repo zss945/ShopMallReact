@@ -30,11 +30,12 @@ class OrderUnPay extends React.Component {
         };
     }
 
+
     loadData() {
         const {page, seed} = this.state;
         const url = API.BaseURL + `?seed=${seed}&page=${page}&results=20`;
         this.setState({loading: true});
-        NetworkUtil.get(url, (res) => {
+        NetworkUtil.getNoCode(url, (res) => {
             this.setState({
                 data: page === 1 ? res.results : [...this.state.data, ...res.results],
                 error: res.error || null,
@@ -121,7 +122,7 @@ class OrderUnPay extends React.Component {
                 onRefresh={this.handleRefresh}
                 refreshing={this.state.refreshing}
                 onEndReached={this.handleLoadMore}
-                onEndReachedThreshold={50}
+                onEndReachedThreshold={0.01}
             />
         );
     }
