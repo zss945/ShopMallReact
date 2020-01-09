@@ -10,6 +10,7 @@ import Login from "./auth/Login";
 import Order from "./user/order/Order";
 import HomeList from "./home/HomeList";
 import GoodsDetails from "./goods/GoodsDetails";
+import Settings from "./user/settings/Settings";
 
 const TabNavigator = createBottomTabNavigator(
     {
@@ -78,6 +79,10 @@ const StackTabNavigator = createStackNavigator({
         Cart: {
             screen: Cart,
             navigationOptions: {title: '购物车'},
+        },
+        Settings: {
+            screen: Settings,
+            navigationOptions: {title: '设置'},
         },
 
     },

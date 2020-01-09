@@ -110,7 +110,9 @@ class Cart extends React.Component {
                         style={styles.selectImage}/>
                 </TouchableOpacity>
                 <Image source={{uri: API.FileURL + item.image}} style={styles.cartImage}/>
-                <View>
+                <View style={{
+                    flex: 1
+                }}>
                     <Text
                         style={{
                             fontSize: 14,
@@ -124,12 +126,39 @@ class Cart extends React.Component {
                             marginTop: 5,
                         }}
                     >{this.getSpecValue(item.specificationValues)}</Text>
-                    <Text
-                        style={{
-                            fontSize: 12,
-                            color: '#f00',
-                            marginTop: 10,
-                        }}>{toRMBFormat(item.price)}</Text>
+                    <View style={{
+                        flex: 1,
+                        flexDirection: 'row'
+                    }}>
+                        <Text
+                            style={{
+                                fontSize: 12,
+                                color: '#f00',
+                                marginTop: 10,
+                            }}>{toRMBFormat(item.price)}</Text>
+
+                        <View style={{
+                            flex: 1,
+                        }}/>
+
+                        <Image source={require('../../assets/button_number_sub.png')} style={{
+                            width: 20, height: 20
+                        }}/>
+
+                        <Text
+                            style={{
+                                fontSize: 16,
+                                color: '#919191',
+                                paddingLeft: 10,
+                                paddingRight: 10,
+                            }}>{item.quantity}</Text>
+
+                        <Image source={require('../../assets/button_number_add.png')} style={{
+                            width: 20,
+                            height: 20,
+                            marginRight: 16,
+                        }}/>
+                    </View>
                 </View>
             </View>
         );

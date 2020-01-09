@@ -92,17 +92,17 @@ class User extends React.Component {
                 </View>
                 <View style={styles.space}/>
                 <ListItem title={'地址管理'} onPress={() => {
-                    this.props.navigation.navigate('Login');
+
                 }}>
                 </ListItem>
                 <View style={styles.line}/>
                 <ListItem title={'帮助与客服'} onPress={() => {
-                    this.props.navigation.navigate('Login');
+
                 }}>
                 </ListItem>
                 <View style={styles.line}/>
                 <ListItem title={'设置'} onPress={() => {
-                    this.props.navigation.navigate('Login');
+                    this.props.navigation.navigate('Settings');
                 }}>
                 </ListItem>
                 <View style={styles.line}/>

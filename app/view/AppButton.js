@@ -34,7 +34,7 @@ AppButton.defaultProps = {
 
 AppButton.propTypes={
     style: PropTypes.object,
-    bgColor: PropTypes.string,
+    backgroundColor: PropTypes.string,
     textColor: PropTypes.string,
     title: PropTypes.string.isRequired,
     onPress: PropTypes.func.isRequired,
