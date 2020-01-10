@@ -47,7 +47,10 @@ class Cart extends React.Component {
             StoreUtil.getData("cartList", (data) => {
                 this.setState({
                     cartData: data,
+                },()=>{
+                    this.calcTotal();
                 });
+
             });
         });
     }
