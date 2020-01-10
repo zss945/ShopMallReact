@@ -43,6 +43,7 @@ class GoodsDetails extends Component {
                 <View style={styles.imagesContainer}>
                     <Swiper
                         renderPagination={renderPagination}
+                        autoplayTimeout={3}
                         autoplay={true}
                         loop={true}>
                         {
@@ -147,7 +148,7 @@ const styles = StyleSheet.create({
     },
     goodsText: {
         color: '#515151',
-        fontSize: 18,
+        fontSize: 17,
         paddingLeft: 12,
         paddingRight: 12,
         paddingBottom: 10,

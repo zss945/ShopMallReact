@@ -10,17 +10,14 @@ class Settings extends React.Component{
             <View style={styles.container}>
                 <View style={styles.space}/>
                 <ListItem title={'修改密码'} onPress={() => {
-                    this.props.navigation.navigate('Login');
                 }}>
                 </ListItem>
                 <View style={styles.line}/>
                 <ListItem title={'帮助与客服'} onPress={() => {
-                    this.props.navigation.navigate('Login');
                 }}>
                 </ListItem>
                 <View style={styles.line}/>
                 <ListItem title={'关于我们'} onPress={() => {
-                    this.props.navigation.navigate('Login');
                 }}>
                 </ListItem>
                 <View style={styles.line}/>
